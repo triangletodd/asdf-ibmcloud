@@ -14,6 +14,12 @@
 - [Contributing](#contributing)
 - [License](#license)
 
+# Work in Progress
+ - [x] Fetch Versions `bin/list-all`
+ - [x] Fetch Latest Version `bin/latest-stable`
+ - [x] Download Script `bin/download`
+ - [ ] Installer `bin/install`
+
 # Dependencies
 
 - `bash`, `curl`, `tar`, `tr`, `td`: generic POSIX utilities.
