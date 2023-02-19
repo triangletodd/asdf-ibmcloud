@@ -146,32 +146,22 @@ install_version() {
     )
 }
 
-ibm_way() {
-
-  if
-  then
-      echo "Download complete. Executing installer..."
-  else
-      echo "Download failed. Please check your network connection. Quit installation."
-      exit 1
-  fi
-
-  calculated_sha1sum=$(sha1sum /tmp/${file_name} | awk '{print $1}')
-  if [ "$sh1sum" != "$calculated_sha1sum" ]; then
-      echo "Downloaded file is corrupted. Quit installation."
-      exit 1
-  fi
-  cd /tmp || exit
-  tar -xvf /tmp/${file_name}
-  chmod 755 /tmp/Bluemix_CLI/install
-  /tmp/Bluemix_CLI/install -q
-  install_result=$?
-  rm -rf /tmp/Bluemix_CLI
-
-  if [ $install_result -eq 0 ] ; then
-      echo "Install complete."
-  else
-      echo "Install failed."
-  fi
-  rm /tmp/${file_name}
-}
+  #calculated_sha1sum=$(sha1sum /tmp/${file_name} | awk '{print $1}')
+  #if [ "$sh1sum" != "$calculated_sha1sum" ]; then
+      #echo "Downloaded file is corrupted. Quit installation."
+      #exit 1
+  #fi
+  #cd /tmp || exit
+  #tar -xvf /tmp/${file_name}
+  #chmod 755 /tmp/Bluemix_CLI/install
+  #/tmp/Bluemix_CLI/install -q
+  #install_result=$?
+  #rm -rf /tmp/Bluemix_CLI
+#
+  #if [ $install_result -eq 0 ] ; then
+      #echo "Install complete."
+  #else
+      #echo "Install failed."
+  #fi
+  #rm /tmp/${file_name}
+#
