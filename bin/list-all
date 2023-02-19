@@ -7,4 +7,4 @@ plugin_dir=$(dirname "$(dirname "$current_script_path")")
 # shellcheck source=/dev/null
 source "$(dirname "$0")/../lib/utils.bash"
 
-list_all_versions
+list_all_versions | paste -sd " " -
