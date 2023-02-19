@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+set -x
+
 [ "${BASH_VERSINFO[0]}" -ge 3 ] && set -o pipefail
 
 GH_REPO="https://github.com/IBM-Cloud/ibm-cloud-cli-release"
