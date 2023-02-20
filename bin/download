@@ -17,13 +17,13 @@ pushd "$ASDF_DOWNLOAD_PATH"
 msg "* Downloading $TOOL_NAME release $ASDF_INSTALL_VERSION..."
 curl -fsSL -O -C - "$(release_url)" || fail "Could not download $(release_url)"
 
-platform="$(get_platform)"
+platform="$(get_platform "$@")"
 
 #  Extract contents of tar.gz file into the download directory
 if [[ $platform == "darwin" ]]; then
-  pkgutil --expand $(release_file) pkg
+  pkgutil --expand "$(release_file)" pkg
   pushd pkg
-  cat Command_Line_Interface.pkg/Payload | gunzip -dc | cpio -i
+  gunzip -dc < Command_Line_Interface.pkg/Payload | cpio -i
   mv usr/local/ibmcloud/bin "${ASDF_DOWNLOAD_PATH}/"
   mv usr/local/ibmcloud/autocomplete "${ASDF_DOWNLOAD_PATH}/"
   popd
