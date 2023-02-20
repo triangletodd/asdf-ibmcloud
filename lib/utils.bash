@@ -8,60 +8,62 @@ GH_REPO="https://github.com/IBM-Cloud/ibm-cloud-cli-release"
 TOOL_NAME="ibmcloud"
 TOOL_TEST="ibmcloud"
 
-get_platform () {
-    local silent=${1:-}
-    local platform=""
+get_platform() {
+  local silent=${1:-}
+  local platform=""
 
-    platform="$(uname | tr '[:upper:]' '[:lower:]')"
+  platform="$(uname | tr '[:upper:]' '[:lower:]')"
 
-    case "$platform" in
-        linux|darwin|freebsd)
-            [ -z "$silent" ]
-            ;;
-        *)
-            fail "Platform '${platform}' not supported!"
-            ;;
-    esac
+  case "$platform" in
+  linux | darwin | freebsd)
+    [ -z "$silent" ]
+    ;;
+  *)
+    fail "Platform '${platform}' not supported!"
+    ;;
+  esac
 
-    printf "%s" "$platform"
+  printf "%s" "$platform"
 }
 
-get_arch () {
-    local arch=""
-    local arch_check=${ASDF_IBMCLOUD_OVERWRITE_ARCH:-"$(uname -m)"}
-    case "${arch_check}" in
-        x86_64|amd64) arch="amd64"; ;;
-        i686|i386|386) arch="386"; ;;
-        armv6l|armv7l) arch="armv6l"; ;;
-        aarch64|arm64) arch="arm64"; ;;
-        ppc64le) arch="ppc64le"; ;;
-        *)
-            fail "Arch '${arch_check}' not supported!"
-            ;;
-    esac
+get_arch() {
+  local arch=""
+  local arch_check=${ASDF_IBMCLOUD_OVERWRITE_ARCH:-"$(uname -m)"}
+  case "${arch_check}" in
+  x86_64 | amd64) arch="amd64" ;;
+  i686 | i386 | 386) arch="386" ;;
+  armv6l | armv7l) arch="armv6l" ;;
+  aarch64 | arm64) arch="arm64" ;;
+  ppc64le) arch="ppc64le" ;;
+  *)
+    fail "Arch '${arch_check}' not supported!"
+    ;;
+  esac
 
-    printf "%s" "$arch"
+  printf "%s" "$arch"
 }
 
-release_file () {
-    local ext
-    local arch="$(get_arch)"
-    local platform="$(get_platform)"
+release_file() {
+  local ext
+  local arch="$(get_arch)"
+  local platform="$(get_platform)"
 
-    case $platform in
-        linux|freebsd)
-            ext='tar.gz'; ;;
-        darwin)
-            ext='pkg'; ;;
-    esac
+  case $platform in
+  linux | freebsd)
+    ext='tar.gz'
+    ;;
+  darwin)
+    ext='pkg'
+    ;;
+  esac
 
-    printf "%s" "IBM_Cloud_CLI_${ASDF_INSTALL_VERSION}_${arch}.${ext}"
+  printf "%s" "IBM_Cloud_CLI_${ASDF_INSTALL_VERSION}_${arch}.${ext}"
 }
 
-release_url () {
-    local base="https://download.clis.cloud.ibm.com/ibm-cloud-cli"
+release_url() {
+  local base="https://download.clis.cloud.ibm.com/ibm-cloud-cli"
 
-    printf "%s" "${base}/${ASDF_INSTALL_VERSION}/$(release_file)"
+  printf "%s" "${base}/${ASDF_INSTALL_VERSION}/$(release_file)"
 }
 
 sort_versions() {
@@ -76,16 +78,15 @@ list_github_tags() {
     sort_versions
 }
 
-msg () {
-    echo -e "\033[32m$1\033[39m" >&2
+msg() {
+  echo -e "\033[32m$1\033[39m" >&2
 }
 
-err () {
-    echo -e "\033[31m$1\033[39m" >&2
+err() {
+  echo -e "\033[31m$1\033[39m" >&2
 }
 
-fail () {
-    err "$1"
-    exit 1
+fail() {
+  err "$1"
+  exit 1
 }
-
