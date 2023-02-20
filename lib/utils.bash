@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-set -x
 
 [ "${BASH_VERSINFO[0]}" -ge 3 ] && set -o pipefail
 
