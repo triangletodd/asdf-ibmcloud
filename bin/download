@@ -23,7 +23,7 @@ platform="$(get_platform "$@")"
 if [[ $platform == "darwin" ]]; then
   pkgutil --expand "$(release_file)" pkg
   pushd pkg
-  gunzip -dc < Command_Line_Interface.pkg/Payload | cpio -i
+  gunzip -dc <Command_Line_Interface.pkg/Payload | cpio -i
   mv usr/local/ibmcloud/bin "${ASDF_DOWNLOAD_PATH}/"
   mv usr/local/ibmcloud/autocomplete "${ASDF_DOWNLOAD_PATH}/"
   popd
