@@ -24,10 +24,10 @@ arch="$(get_arch)"
 if [[ $platform == "darwin" ]]; then
   pkgutil --expand $(release_file) pkg
   pushd pkg
-  cat pkg/Command_Line_Interface.pkg/Payload | gunzip -dc | cpio -i
-  popd pkg
-  mv usr/local/ibmcloud/bin ./
-  mv usr/local/ibmcloud/autocomplete ./
+  cat Command_Line_Interface.pkg/Payload | gunzip -dc | cpio -i
+  mv usr/local/ibmcloud/bin "${ASDF_DOWNLOAD_PATH}/"
+  mv usr/local/ibmcloud/autocomplete "${ASDF_DOWNLOAD_PATH}/"
+  popd
   rm -rf ./pkg
 else
   tar -xzf "$(release_file)" -C "$ASDF_DOWNLOAD_PATH" --strip-components=1 || fail "Could not extract $(release_file)"
