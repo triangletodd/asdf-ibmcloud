@@ -19,11 +19,11 @@ fi
 
   local tool_cmd
   tool_cmd="$(echo "$TOOL_TEST" | cut -d' ' -f1)"
-  test -x "$ASDF_INSTALL_PATH/$tool_cmd" || fail "Expected $ASDF_INSTALL_PATH/$tool_cmd to be executable."
+  test -x "$ASDF_INSTALL_PATH/bin/$tool_cmd" || fail "Expected $ASDF_INSTALL_PATH/$tool_cmd to be executable."
 
-  echo "$TOOL_NAME $version installation was successful!"
+  echo "$TOOL_NAME $ASDF_INSTALL_VERSION installation was successful!"
 ) || (
   rm -rf "$ASDF_INSTALL_PATH"
-  fail "An error occurred while installing $TOOL_NAME $version."
+  fail "An error occurred while installing $TOOL_NAME $ASDF_INSTALL_VERSION."
 )
 
