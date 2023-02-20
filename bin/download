@@ -19,7 +19,13 @@ curl -fsSL -O -C - "$(release_url)" || fail "Could not download $(release_url)"
 
 #  Extract contents of tar.gz file into the download directory
 if [[ get_platform == 'darwin' ]]; then
-  installer -pkg myapp.pkg -target "$ASDF_DOWNLOAD_PATH"
+  pkgutil --expand $(release_file) pkg
+  pushd pkg
+  cat pkg/Command_Line_Interface.pkg/Payload | gunzip -dc | cpio -i
+  popd pkg
+  mv usr/local/ibmcloud/bin ./
+  mv usr/local/ibmcloud/autocomplete ./
+  rm -rf ./pkg
 else
   tar -xzf "$(release_file)" -C "$ASDF_DOWNLOAD_PATH" --strip-components=1 || fail "Could not extract $(release_file)"
 fi
