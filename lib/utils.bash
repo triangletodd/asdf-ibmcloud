@@ -57,7 +57,11 @@ release_file() {
     ;;
   esac
 
-  printf "%s" "IBM_Cloud_CLI_${ASDF_INSTALL_VERSION}_${arch}.${ext}"
+  if [[ get_platform == 'darwin' ]]; then
+    printf "%s" "IBM_Cloud_CLI_${ASDF_INSTALL_VERSION}.${ext}"
+  else
+    printf "%s" "IBM_Cloud_CLI_${ASDF_INSTALL_VERSION}_${arch}.${ext}"
+  fi
 }
 
 release_url() {
