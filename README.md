@@ -3,7 +3,7 @@
 # asdf-ibmcloud [![Build](https://github.com/triangletodd/asdf-ibmcloud/actions/workflows/build.yml/badge.svg)](https://github.com/triangletodd/asdf-ibmcloud/actions/workflows/build.yml) [![Lint](https://github.com/triangletodd/asdf-ibmcloud/actions/workflows/lint.yml/badge.svg)](https://github.com/triangletodd/asdf-ibmcloud/actions/workflows/lint.yml)
 
 
-[ibmcloud](https://github.com/triangletodd/asdf-ibmcloud) plugin for the [asdf version manager](https://asdf-vm.com).
+[IBM Cloud](https://www.ibm.com/cloud) plugin for the [asdf version manager](https://asdf-vm.com).
 
 </div>
 
