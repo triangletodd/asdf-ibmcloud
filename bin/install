@@ -8,7 +8,8 @@ plugin_dir=$(dirname "$(dirname "$current_script_path")")
 source "${plugin_dir}/lib/utils.bash"
 
 
-if [[ -z $ASDF_DOWNLOAD_PATH ]]; then
-  ${plugin_dir}/download
+if [ "$ASDF_INSTALL_TYPE" != "version" ]; then
+  fail "asdf-$TOOL_NAME supports release installs only"
 fi
+
 

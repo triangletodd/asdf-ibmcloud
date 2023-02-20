@@ -15,12 +15,11 @@ mkdir -p "$ASDF_DOWNLOAD_PATH"
 pushd "$ASDF_DOWNLOAD_PATH"
 
 msg "* Downloading $TOOL_NAME release $ASDF_INSTALL_VERSION..."
-msg "* $(release_url)"
 curl "${curl_opts[@]}" -O -C - "$(release_url)" || fail "Could not download $(release_url)"
 
 #  Extract contents of tar.gz file into the download directory
 tar -xzf "$(release_file)" -C "$ASDF_DOWNLOAD_PATH" --strip-components=1 || fail "Could not extract $release_file"
 
 # Remove the tar.gz file since we don't need to keep it
-rm "$(release_file)"
+rm "$(ASDF_DOWNLOAD_PATH)/$(release_file)"
 
