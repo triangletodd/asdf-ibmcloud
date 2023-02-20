@@ -57,10 +57,18 @@ release_file() {
     ;;
   esac
 
-  if [[ $(get_platform) == "darwin" ]]; then
-    printf "%s" "IBM_Cloud_CLI_${ASDF_INSTALL_VERSION}.${ext}"
+  local prefix="IBM_Cloud_CLI_"
+
+  if [[ $platform == "darwin" ]]; then
+    if [[ $arch == "amd64" ]]; then
+      printf "%s" "${prefix}${ASDF_INSTALL_VERSION}.${ext}"
+    elif [[ $arch == "arm64" ]]; then
+      printf "%s" "${prefix}${ASDF_INSTALL_VERSION}_${arch}.${ext}"
+    else
+      fail "Arch '${arch}' on Darwin not supported!"
+    fi
   else
-    printf "%s" "IBM_Cloud_CLI_${ASDF_INSTALL_VERSION}_${arch}.${ext}"
+    printf "%s" "${prefix}${ASDF_INSTALL_VERSION}_${arch}.${ext}"
   fi
 }
 

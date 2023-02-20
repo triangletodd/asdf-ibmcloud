@@ -18,7 +18,6 @@ msg "* Downloading $TOOL_NAME release $ASDF_INSTALL_VERSION..."
 curl -fsSL -O -C - "$(release_url)" || fail "Could not download $(release_url)"
 
 platform="$(get_platform)"
-arch="$(get_arch)"
 
 #  Extract contents of tar.gz file into the download directory
 if [[ $platform == "darwin" ]]; then
