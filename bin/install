@@ -14,7 +14,8 @@ fi
 
 (
   mkdir -p "$ASDF_INSTALL_PATH"
-  cp -r "$ASDF_DOWNLOAD_PATH"/* "$ASDF_INSTALL_PATH"
+  cp -r "$ASDF_DOWNLOAD_PATH"/autocomplete "$ASDF_INSTALL_PATH"
+  cp -r "$ASDF_DOWNLOAD_PATH"/bin "$ASDF_INSTALL_PATH"
 
   local tool_cmd
   tool_cmd="$(echo "$TOOL_TEST" | cut -d' ' -f1)"
