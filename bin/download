@@ -17,8 +17,11 @@ pushd "$ASDF_DOWNLOAD_PATH"
 msg "* Downloading $TOOL_NAME release $ASDF_INSTALL_VERSION..."
 curl -fsSL -O -C - "$(release_url)" || fail "Could not download $(release_url)"
 
+platform="$(get_platform)"
+arch="$(get_arch)"
+
 #  Extract contents of tar.gz file into the download directory
-if [[ get_platform == 'darwin' ]]; then
+if [[ $platform == "darwin" ]]; then
   pkgutil --expand $(release_file) pkg
   pushd pkg
   cat pkg/Command_Line_Interface.pkg/Payload | gunzip -dc | cpio -i
