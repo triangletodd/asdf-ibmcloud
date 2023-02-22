@@ -23,7 +23,7 @@
 Plugin:
 
 ```shell
-asdf plugin add ibmcloud https://github.com/triangletodd/asdf-ibmcloud.git
+asdf plugin add ibmcloud
 ```
 
 ibmcloud:
