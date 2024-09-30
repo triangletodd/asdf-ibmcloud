@@ -9,10 +9,15 @@
 
 # Contents
 
+- [Disclaimer](#disclaimer)
 - [Dependencies](#dependencies)
 - [Install](#install)
 - [Contributing](#contributing)
 - [License](#license)
+
+# Disclaimer
+
+This software is an independent, community-driven project and is not affiliated with, endorsed by, or maintained by IBM. IBM does not contribute to, sponsor, or support this project, and assumes no responsibility or liability for its use.
 
 # Dependencies
 
